@@ -9,7 +9,7 @@
       register: result
     - name: lookup works only on local file.
       debug:
-        msg: "{{ user_data | upper }}
+        msg: "{{ user_data | upper }}"
     - name: Uppercase message
       debug:
         msg: "{{ result.stdout | upper }}"

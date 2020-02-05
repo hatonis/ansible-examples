@@ -1,19 +1,19 @@
 # Les Playbooks
 
 ## Ad-Hoc commande pour afficher les facts 
-```ansible target2 -i ../inventory -m setup```
+```ansible target2 -i inventory_children -m setup```
 
 ## Les facts dans un fichier YAML
 ### Utilisation de when 
-```ansible-playbook -i ../inventory_children ansible_facts_using_when.yml```
+```ansible-playbook -i inventory_children ansible_facts_using_when.yml```
 ### Utilisation de la commande assert 
-```ansible-playbook -i ../inventory_children ansible_facts_using_assert.yml```  
+```ansible-playbook -i inventory_children ansible_facts_using_assert.yml```  
 
 ### Le prompt et les conditions
-```ansible-playbook -i ../inventory_children conditions.yml --limit centos```
+```ansible-playbook -i inventory_children conditions.yml --limit centos```
 
 ### les boucles
-```ansible-playbook -i ../inventory_children loops.yml --limit centos```
+```ansible-playbook -i inventory_children loops.yml --limit centos```
 
 ## Passage d'information entre les hosts
 ### Runtime Inventory 
@@ -21,7 +21,7 @@ Pour passer des variables entre remote-to-remote host il est possible
 de creer un host de type dummy et lui attacher des variables pour les passer 
 vers l'autre host.
 
-```ansible-playbook -i ../inventory_children runtime_inventory_additions.yml```
+```ansible-playbook -i inventory_children runtime_inventory_additions.yml```
 
 ### Inventaire dynamique
 Faire un fork de ce repo  
@@ -37,10 +37,10 @@ et  tapez
 ## Utilisation des variables et des filtres 
 
 ### Changer the Message Of The Day (MOTD) 
-```ansible-playbook -i ../inventory_children motd.yml --limit target2```
+```ansible-playbook -i inventory_children motd.yml --limit target2```
 
 ### Les filters, creer son propre filtre 
-```ansible-playbook -i ../inventory_children new_filter.yml --limit target2```
+```ansible-playbook -i inventory_children new_filter.yml --limit target2```
 
 ## Les modules
 ### Creer son propre module 
@@ -52,7 +52,7 @@ Dans votre home directory faire un ```vi token``` et copier votre
 token.  
 Toujours sous le prompt venv
 faire ```pip3 install requests``` et 
-```ansible-playbook -i ../inventory_children ansible_create_module.yml```
+```ansible-playbook -i inventory_children ansible_create_module.yml```
 ## Les Roles
 
 ### Mettre le precedement playbook dans un role 

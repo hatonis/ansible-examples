@@ -1,13 +1,13 @@
 [local]
 localhost ansible_connection=local  ansible_python_interpreter="/usr/bin/env python"
 [alpine]
-alpine01 ansible_host=172.17.0.4  ansible_user=root  ansible_password=xxx ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+alpine01 ansible_host=172.17.0.4  ansible_user=root  ansible_password=Passw0rd ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 [centosdocker]
-target2 ansible_host=172.17.0.3  ansible_user=centos  ansible_password=xxx ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+target2 ansible_host=172.17.0.3  ansible_user=centos  ansible_password=Passw0rd ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 [centosvm]
-centos_remote_a ansible_host=51.68.28.198 ansible_ssh_user=centos ansible_ssh_private_key=/home/centos/.ssh/id_rsa
+centos_remote_a ansible_host=164.132.212.66 ansible_ssh_user=centos ansible_ssh_private_key=/home/centos/.ssh/id_rsa
 [ubuntu]
-ubuntu01 ansible_host=172.17.0.2  ansible_user=ubuntu  ansible_password=xxx ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+ubuntu01 ansible_host=172.17.0.2  ansible_user=ubuntu  ansible_password=Passw0rd ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 [centos:children]
 centosdocker
 centosvm

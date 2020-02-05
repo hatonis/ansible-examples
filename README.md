@@ -20,7 +20,7 @@ c714f0b92509        systemdevformations/centos_ssh:v4   "/usr/bin/supervisor…"
  ```shell script
  docker inspect target1 | grep IPAddress  # ubuntu/Passw0rd  
  docker inspect target2 | grep IPAddress  # centos/Passw0rd 
- docker inspect target3 | grep IPAddress  # alpine/Passw0rd 
+ docker inspect target3 | grep IPAddress  # root/Passw0rd 
 ```
 Faire un git fork et clone de ce repo  
 ```git clone  <http votre repo forke>```
@@ -60,17 +60,17 @@ pour utiliser ssh avec un password, c'est-a'dire sans cle ssh.
 ```apt-get -y install sshpass```
 
 et faire la commande Ansible Ad-Hoc 
-```ansible all -m ping -i inventory```
+```ansible all -m ping -i inventory_children```
 
 Faire ensuite 
 ``` code 
-ansible centos -m yum -a "name=elinks state=latest" -i inventory
-ansible centos -b -m yum -a "name=elinks state=latest" -i inventory
-ansible centos --list-hosts -i inventory
-ansible all -m setup -a "filter=ansible_default_ipv4"  -i inventory
-ansible all -m command -a "df -h" -i inventory
-ansible centos -m yum -a "name=* state=latest" -f 100  -i inventory
-ansible centos -m file -a "dest=/home/centos/testfile state=touch" -i inventory 
+ansible centos -m yum -a "name=elinks state=latest" -i inventory_children
+ansible centos -b -m yum -a "name=elinks state=latest" -i inventory_children
+ansible centos --list-hosts -i inventory_children
+ansible all -m setup -a "filter=ansible_default_ipv4"  -i inventory_children
+ansible all -m command -a "df -h" -i inventory_children
+ansible centos -b -m yum -a "name=* state=latest" -f 100  -i inventory_children
+ansible centos -m file -a "dest=/home/centos/testfile state=touch" -i inventory_children
 ```
 ## Presentation des groupes
 Dans la directory ansible-examples copiez le fichier inventory children 
@@ -81,8 +81,8 @@ et modifier les passwords et adresses IP
 Dans la directory ansible-examples editez le fichier ansible_ping.yml
 ## Premieres commandes ansible-playbook
  ```shell script
-ansible-playbook  -i ../inventory_children ansible_ping.yml  --limit centosdocker
-ansible-playbook  -i ../inventory_children ansible_ping.yml  --limit centos
+ansible-playbook  -i inventory_children ansible_ping.yml  --limit centosdocker
+ansible-playbook  -i inventory_children ansible_ping.yml  --limit centos
 ````
 
 
